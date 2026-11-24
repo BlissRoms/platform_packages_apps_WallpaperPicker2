@@ -131,7 +131,7 @@ public class AppResourceWallpaperInfo extends WallpaperInfo {
     public Asset getThumbAsset(Context context) {
         if (mThumbAsset == null) {
             Resources res = getPackageResources(context);
-            mThumbAsset = new ResourceAsset(res, mThumbRes);
+            mThumbAsset = new ResourceAsset(res, mThumbRes, true);
         }
         return mThumbAsset;
     }

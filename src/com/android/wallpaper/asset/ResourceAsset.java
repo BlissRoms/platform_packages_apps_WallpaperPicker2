@@ -139,7 +139,7 @@ public class ResourceAsset extends StreamableAsset {
      */
     public Key getKey() {
         if (mKey == null) {
-            mKey = new PackageResourceKey(mRes, mResId);
+            mKey = new PackageResourceKey(mRes, mResId, mIsThumbnail);
         }
         return mKey;
     }
@@ -169,10 +169,16 @@ public class ResourceAsset extends StreamableAsset {
     protected static class PackageResourceKey implements Key {
         protected String mPackageName;
         protected int mResId;
+        protected boolean mIsThumbnail;
 
         public PackageResourceKey(Resources res, int resId) {
+            this(res, resId, false);
+        }
+
+        public PackageResourceKey(Resources res, int resId, boolean isThumbnail) {
             mPackageName = res.getResourcePackageName(resId);
             mResId = resId;
+            mIsThumbnail = isThumbnail;
         }
 
         @Override
@@ -206,6 +212,7 @@ public class ResourceAsset extends StreamableAsset {
             return "PackageResourceKey{"
                     + "packageName=" + mPackageName
                     + ",resId=" + mResId
+                    + ",isThumbnail=" + mIsThumbnail
                     + '}';
         }
     }

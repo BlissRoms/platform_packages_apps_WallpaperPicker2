@@ -135,7 +135,7 @@ public class PartnerWallpaperInfo extends DefaultWallpaperInfo {
     public Asset getThumbAsset(Context context) {
         if (mThumbAsset == null) {
             Resources partnerRes = getPartnerResources(context);
-            mThumbAsset = new ResourceAsset(partnerRes, mThumbRes);
+            mThumbAsset = new ResourceAsset(partnerRes, mThumbRes, true);
         }
         return mThumbAsset;
     }
